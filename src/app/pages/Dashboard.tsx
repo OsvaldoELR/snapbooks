@@ -20,9 +20,9 @@ export default function Dashboard() {
       title: 'Dinero Total Recibido',
       value: formatCurrency(metrics.totalReceived),
       icon: Wallet,
-      color: 'bg-blue-500',
-      textColor: 'text-blue-600',
-      bgLight: 'bg-blue-50',
+      color: 'bg-emerald-500',
+      textColor: 'text-emerald-600',
+      bgLight: 'bg-emerald-50',
     },
     {
       title: 'Total Gastos',
@@ -36,17 +36,17 @@ export default function Dashboard() {
       title: 'Total Salarios Pagados',
       value: formatCurrency(metrics.totalSalaries),
       icon: DollarSign,
-      color: 'bg-purple-500',
-      textColor: 'text-purple-600',
-      bgLight: 'bg-purple-50',
+      color: 'bg-cyan-500',
+      textColor: 'text-cyan-600',
+      bgLight: 'bg-cyan-50',
     },
     {
       title: 'Reserva de Impresiones',
       value: formatCurrency(metrics.printReserve),
       icon: Printer,
-      color: 'bg-orange-500',
-      textColor: 'text-orange-600',
-      bgLight: 'bg-orange-50',
+      color: 'bg-amber-500',
+      textColor: 'text-amber-600',
+      bgLight: 'bg-amber-50',
     },
     {
       title: 'Utilidad Real del Negocio',
@@ -60,9 +60,9 @@ export default function Dashboard() {
       title: 'Saldo Esperado en Cuenta',
       value: formatCurrency(metrics.expectedBankBalance),
       icon: Banknote,
-      color: 'bg-indigo-500',
-      textColor: 'text-indigo-600',
-      bgLight: 'bg-indigo-50',
+      color: 'bg-blue-500',
+      textColor: 'text-blue-600',
+      bgLight: 'bg-blue-50',
     },
   ];
 
@@ -84,8 +84,8 @@ export default function Dashboard() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-        <p className="text-gray-600">Vista general de tu estudio fotográfico</p>
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">Dashboard</h1>
+        <p className="text-slate-600">Vista general de tu estudio fotográfico</p>
       </div>
 
       {/* Main Metrics Grid */}
@@ -93,14 +93,14 @@ export default function Dashboard() {
         {statCards.map((card, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6"
+            className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all p-6 border border-slate-200"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-600 mb-2">{card.title}</p>
+                <p className="text-sm font-medium text-slate-600 mb-2">{card.title}</p>
                 <p className={`text-2xl font-bold ${card.textColor}`}>{card.value}</p>
               </div>
-              <div className={`${card.bgLight} p-3 rounded-lg`}>
+              <div className={`${card.bgLight} p-3 rounded-xl`}>
                 <card.icon className={`w-6 h-6 ${card.textColor}`} />
               </div>
             </div>
@@ -113,13 +113,13 @@ export default function Dashboard() {
         {periodStats.map((stat, index) => (
           <div
             key={index}
-            className={`bg-white rounded-xl shadow-md p-6 border-l-4 ${
-              stat.positive ? 'border-green-500' : 'border-red-500'
+            className={`bg-white rounded-2xl shadow-sm p-6 border-l-4 border border-slate-200 ${
+              stat.positive ? 'border-l-green-500' : 'border-l-red-500'
             }`}
           >
             <div className="flex items-center gap-4">
               <div
-                className={`p-3 rounded-lg ${
+                className={`p-3 rounded-xl ${
                   stat.positive ? 'bg-green-50' : 'bg-red-50'
                 }`}
               >
@@ -130,7 +130,7 @@ export default function Dashboard() {
                 />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-600">{stat.title}</p>
+                <p className="text-sm font-medium text-slate-600">{stat.title}</p>
                 <p
                   className={`text-2xl font-bold ${
                     stat.positive ? 'text-green-600' : 'text-red-600'
@@ -145,27 +145,27 @@ export default function Dashboard() {
       </div>
 
       {/* Quick Stats */}
-      <div className="bg-white rounded-xl shadow-md p-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Estadísticas Rápidas</h2>
+      <div className="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
+        <h2 className="text-xl font-bold text-slate-900 mb-4">Estadísticas Rápidas</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-600 mb-1">Sesiones Totales</p>
-            <p className="text-2xl font-bold text-gray-900">{data.sessions.length}</p>
+          <div className="text-center p-4 bg-slate-50 rounded-xl border border-slate-100">
+            <p className="text-sm text-slate-600 mb-1">Sesiones Totales</p>
+            <p className="text-2xl font-bold text-slate-900">{data.sessions.length}</p>
           </div>
-          <div className="text-center p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-600 mb-1">Sesiones Entregadas</p>
-            <p className="text-2xl font-bold text-green-600">
+          <div className="text-center p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+            <p className="text-sm text-emerald-700 mb-1">Sesiones Entregadas</p>
+            <p className="text-2xl font-bold text-emerald-600">
               {data.sessions.filter(s => s.status === 'entregada').length}
             </p>
           </div>
-          <div className="text-center p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-600 mb-1">Impresiones Pendientes</p>
-            <p className="text-2xl font-bold text-orange-600">
+          <div className="text-center p-4 bg-amber-50 rounded-xl border border-amber-100">
+            <p className="text-sm text-amber-700 mb-1">Impresiones Pendientes</p>
+            <p className="text-2xl font-bold text-amber-600">
               {data.prints.filter(p => p.status === 'pagada').length}
             </p>
           </div>
-          <div className="text-center p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-600 mb-1">Deudas Activas</p>
+          <div className="text-center p-4 bg-red-50 rounded-xl border border-red-100">
+            <p className="text-sm text-red-700 mb-1">Deudas Activas</p>
             <p className="text-2xl font-bold text-red-600">
               {data.debts.filter(d => !d.paid).length}
             </p>
@@ -174,12 +174,12 @@ export default function Dashboard() {
       </div>
 
       {/* Info Box */}
-      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
-        <h3 className="text-lg font-bold mb-2">💡 Filosofía SnapBooks</h3>
-        <p className="text-indigo-100">
-          Este sistema separa dinero cobrado vs dinero ganado. Solo cuenta como ganancia 
-          lo que ya fue entregado al cliente. Primero se pagan costos y salarios, 
-          luego se calcula la utilidad real. Las impresiones pendientes van a reserva 
+      <div className="bg-gradient-to-r from-slate-900 to-slate-700 rounded-2xl shadow-sm p-6 text-white border border-slate-200">
+        <h3 className="text-lg font-bold mb-2">Filosofía SnapBooks</h3>
+        <p className="text-slate-200 leading-relaxed">
+          Este sistema separa dinero cobrado vs dinero ganado. Solo cuenta como ganancia
+          lo que ya fue entregado al cliente. Primero se pagan costos y salarios,
+          luego se calcula la utilidad real. Las impresiones pendientes van a reserva
           hasta que se entreguen.
         </p>
       </div>
